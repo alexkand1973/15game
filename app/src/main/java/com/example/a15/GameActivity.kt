@@ -2,30 +2,92 @@ package com.example.a15
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.res.AssetFileDescriptor
+import android.content.res.AssetManager
+import android.media.AudioAttributes
 import android.media.MediaPlayer
+import android.media.SoundPool
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_game.*
+import java.io.IOException
 
 
 open class GameActivity : AppCompatActivity() {
 
-    private lateinit var clickButtonSound: MediaPlayer
-    private lateinit var endGameSound: MediaPlayer
-    private lateinit var nullSound: MediaPlayer
-    private lateinit var crushGameSound: MediaPlayer
+    //Воспроизведение звуков
+    private lateinit var soundPool: SoundPool
+    private lateinit var assetManager: AssetManager
+    private val maxStreams: Int = 3
+    private val streamType: Int = 3
+    private val srcQuality: Int = 0
+    private var streamID = 0
+
+    private val attributes = AudioAttributes.Builder()
+        .setUsage(AudioAttributes.USAGE_GAME)
+        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+        .build()
+
+
+    val clickButtonSound = loadSound("clickbutton")
+    val endGameSound = loadSound("endgame")
+    val nullSound = loadSound("soundnull")
+    val crushGameSound = loadSound("crushgame")
+    private var catSound: Int = 0
+    private var chickenSound: Int = 0
+    private var cowSound: Int = 0
+    private var dogSound: Int = 0
+    private var duckSound: Int = 0
+    private var sheepSound: Int = 0
+
+
+
+    load(context: Context!, resId: Int, priority: Int) //Загрузите звук из указанного ресурса APK.
+
+    play(soundID: Int, leftVolume: Float, rightVolume: Float, priority: Int, loop: Int, rate: Float)
+    //Воспроизведение звука из идентификатора звука.
+
+    setVolume(streamID: Int, leftVolume: Float, rightVolume: Float)
+    //Установите громкость потока.
+
+    setOnLoadCompleteListener(listener: SoundPool.OnLoadCompleteListener!)
+    //Устанавливает обработчик обратного вызова для OnLoadCompleteListener.
+
+    setPriority(streamID: Int, priority: Int)
+    //Изменить приоритет потока.
+
+    setRate(streamID: Int, rate: Float)
+    //Изменить скорость воспроизведения.
+
+    unload(soundID: Int)
+    //Выгрузить звук из идентификатора звука.
+
+
+    SoundPool.maxStreams
+
+    SoundPool.stop(streamID: Int)
+    //Остановить воспроизведение потока.
+
+    SoundPool.play()
+    streamID
+    SoundPool.release() //завершает все потоки
+    finalize()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+//Блокировка переворота экрана
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
 // создаем звуковой ряд для игры
-        clickButtonSound = loadSound("clickbutton")
-        endGameSound = loadSound("endgame")
-        nullSound = loadSound("soundnull")
-        crushGameSound = loadSound("crushgame")
+        soundPool = SoundPool.Builder().setAudioAttributes(attributes).build()
+        assetManager = assets
+
+
+
 
 //Возвращение на начальную страницу
         btn_navigationToMainActivity.setOnClickListener {
@@ -421,19 +483,19 @@ open class GameActivity : AppCompatActivity() {
     //завершение игры при правильной и неправильной раскладке
     private fun endGame(string: String) {
         if (string == "end") {
-            playSound(loadSound("endgame"))
+            playSound(endGameSound)
             val intent = Intent(this, endGame::class.java)
-            stopSound(loadSound("endgame"))
+//            stopSound(loadSound("endgame"))
             startActivity(intent)
         } else if (string == "crush") {
-            playSound(loadSound("crushgame"))
+            playSound(crushGameSound)
             val intent = Intent(this, CrushActivity::class.java)
-            stopSound(loadSound("crushgame"))
+//            stopSound(loadSound("crushgame"))
             startActivity(intent)
         } else if (string == "clicksound") {
-            playSound(loadSound("clickbutton"))
+            playSound(clickButtonSound)
         }
-        stopSound(loadSound("clickbutton"))
+//        stopSound(loadSound("clickbutton"))
     }
 
     private fun Intent.getIntExtra(value: Int): String {
@@ -477,41 +539,29 @@ open class GameActivity : AppCompatActivity() {
             return "down"
         } else return ""
     }
-    //Воспроизведение звуков
-//    fun soundClick(): MediaPlayer? {
-//        var mediaPlayerClick: MediaPlayer? = MediaPlayer.create(this, R.raw.clickbutton)
-//        mediaPlayerClick?.setOnPreparedListener{}
-//        return mediaPlayerClick
-//    }
-//
-//    fun soundNull(): MediaPlayer? {
-//        var mediaPlayerNull: MediaPlayer? = MediaPlayer.create(this, R.raw.soundnull)
-//        mediaPlayerNull?.setOnPreparedListener{}
-//        return mediaPlayerNull
-//    }
 
-    private fun playSound(sound: MediaPlayer) {
-        sound.start()
-    }
-    private fun stopSound(sound: MediaPlayer) {
-        sound.stop()
-    }
 
-    private fun loadSound(name: String): MediaPlayer {
-//        val afd: Media
-//        afd = MediaPlayer.create(this, R.raw.clickbutton)
-        var fileName: String = name
-        if (fileName == "clickbutton") {
-            clickButtonSound = MediaPlayer.create(this, R.raw.clickbutton)
-            return clickButtonSound
-        } else if (fileName == "endgame") {
-            endGameSound = MediaPlayer.create(this, R.raw.endgame)
-            return endGameSound
-        } else if (fileName == "soundnull") {
-            nullSound = MediaPlayer.create(this, R.raw.soundnull)
-            return nullSound
-        } else if (fileName == "crushgame")
-            crushGameSound = MediaPlayer.create(this, R.raw.crushgame)
-            return crushGameSound
+override fun onPause() {
+    super.onPause()
+
+    soundPool.release()
+}
+
+private fun playSound(sound: Int): Int {
+    if (sound > 0) {
+        streamID = soundPool.play(sound, 1F, 1F, 1, 0, 1F)
     }
+    return streamID
+}
+
+private fun loadSound(fileName: String): Int {
+    val afd: AssetFileDescriptor = try {
+        application.assets.openFd(fileName)
+    } catch (e: IOException) {
+        e.printStackTrace()
+        Log.d("Meow", "Не могу загрузить файл $fileName")
+        return -1
+    }
+    return soundPool.load(afd, 1)
+}
 }
