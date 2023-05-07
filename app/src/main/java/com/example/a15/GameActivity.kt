@@ -18,8 +18,9 @@ open class GameActivity : AppCompatActivity() {
     private lateinit var assetManager: AssetManager
     private val maxStreams: Int = 3
     private val streamType: Int = 3
-    private val srcQuality: Int = 0
+    private val srcQwality: Int = 0
     private var streamID = 0
+    private var priority = 1
 
     private val attributes = AudioAttributes.Builder()
         .setUsage(AudioAttributes.USAGE_GAME)
@@ -27,10 +28,10 @@ open class GameActivity : AppCompatActivity() {
         .build()
 
 
-    val clickButtonSound = loadSound(this, R.raw.clickbutton)
-    val endGameSound = loadSound(this, R.raw.endgame)
-    val nullSound = loadSound(this, R.raw.soundnull)
-    val crushGameSound = loadSound(this, R.raw.crushgame)
+    val clickButtonSound = loadSound(this, R.raw.clickbutton, priority)
+    val endGameSound = loadSound(this, R.raw.endgame, priority)
+    val nullSound = loadSound(this, R.raw.soundnull, priority)
+    val crushGameSound = loadSound(this, R.raw.crushgame, priority)
 
 
 
@@ -543,8 +544,12 @@ private fun playSound(soundID: SoundPool): Int {
     return streamID
 }
 
-private fun loadSound(context: Context, resID: Int): SoundPool {
-    return soundPool.load(context, resID, 1)
+private fun loadSound(context: Context, resID: Int, priority: Int): SoundPool {
+    return soundPool.load(context, resID, priority)
 
 }
+    private fun mySoundPool(maxStr: Int, strType: Int, srcQwal: Int): SoundPool {
+        return soundPool = mySoundPool(maxStreams, streamType, srcQwality)
+
+    }
 }
