@@ -1,68 +1,21 @@
 package com.example.a15
 
-import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.res.AssetManager
-import android.media.AudioAttributes
+import android.media.AudioManager
 import android.media.SoundPool
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_game.*
 
-
 open class GameActivity : AppCompatActivity() {
 
     //Воспроизведение звуков
-    private lateinit var soundPool: SoundPool
-    private lateinit var assetManager: AssetManager
-    private val maxStreams: Int = 3
-    private val streamType: Int = 3
-    private val srcQwality: Int = 0
-    private var streamID = 0
-    private var priority = 1
-
-    private val attributes = AudioAttributes.Builder()
-        .setUsage(AudioAttributes.USAGE_GAME)
-        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-        .build()
-
-
-    val clickButtonSound = loadSound(this, R.raw.clickbutton, priority)
-    val endGameSound = loadSound(this, R.raw.endgame, priority)
-    val nullSound = loadSound(this, R.raw.soundnull, priority)
-    val crushGameSound = loadSound(this, R.raw.crushgame, priority)
-
-
-
-//    load(context: Context!, resId: Int, priority: Int) //Загрузите звук из указанного ресурса APK.
-//
-//    play(soundID: Int, leftVolume: Float, rightVolume: Float, priority: Int, loop: Int, rate: Float)
-//    //Воспроизведение звука из идентификатора звука.
-//
-//    setVolume(streamID: Int, leftVolume: Float, rightVolume: Float)
-//    //Установите громкость потока.
-//
-//    setOnLoadCompleteListener(listener: SoundPool.OnLoadCompleteListener!)
-//    //Устанавливает обработчик обратного вызова для OnLoadCompleteListener.
-//
-//    setPriority(streamID: Int, priority: Int)
-//    //Изменить приоритет потока.
-//
-//
-//    unload(soundID: Int)
-//    //Выгрузить звук из идентификатора звука.
-//
-//
-//    SoundPool.maxStreams
-//
-//    SoundPool.stop(streamID: Int)
-//    //Остановить воспроизведение потока.
-//
-//    SoundPool.play()
-//    streamID
-//    SoundPool.release() //завершает все потоки
-//    finalize()
+    private var soundPool: SoundPool? = null
+    private var clickButtonSoundID: Int = 0
+    private var endGameSoundID: Int = 0
+    private var nullSoundID: Int = 0
+    private var crushGameSoundID: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,11 +26,14 @@ open class GameActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
 // создаем звуковой ряд для игры
-        soundPool = SoundPool.Builder().setAudioAttributes(attributes).build()
-        assetManager = assets
+//        soundPool = SoundPool.Builder().setAudioAttributes(attributes).build()
+//        assetManager = assets
 
-
-
+        soundPool = SoundPool(6, AudioManager.STREAM_MUSIC, 0)
+        clickButtonSoundID = soundPool!!.load(baseContext, R.raw.clickbutton, 1)
+        crushGameSoundID = soundPool!!.load(baseContext, R.raw.crushgame, 1)
+        endGameSoundID = soundPool!!.load(baseContext, R.raw.endgame, 1)
+        nullSoundID = soundPool!!.load(baseContext, R.raw.soundnull, 1)
 
 //Возвращение на начальную страницу
         btn_navigationToMainActivity.setOnClickListener {
@@ -143,7 +99,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(15, 14)
                     btnFifteen.text = intent.getIntExtra(arrayOfNumbers[14])
                     btnNull.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -163,7 +119,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(14, 13)
                     btnFourteen.text = intent.getIntExtra(arrayOfNumbers[13])
                     btnFifteen.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -183,7 +139,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(13, 12)
                     btnThirteen.text = intent.getIntExtra(arrayOfNumbers[12])
                     btnFourteen.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -199,7 +155,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(12, 13)
                     btnFourteen.text = intent.getIntExtra(arrayOfNumbers[13])
                     btnThirteen.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -219,7 +175,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(11, 15)
                     btnNull.text = intent.getIntExtra(arrayOfNumbers[15])
                     btnTwelve.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -243,7 +199,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(10, 14)
                     btnFifteen.text = intent.getIntExtra(arrayOfNumbers[14])
                     btnEleven.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -267,7 +223,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(9, 13)
                     btnFourteen.text = intent.getIntExtra(arrayOfNumbers[13])
                     btnTen.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -287,7 +243,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(8, 12)
                     btnThirteen.text = intent.getIntExtra(arrayOfNumbers[12])
                     btnNine.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -307,7 +263,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(7, 11)
                     btnTwelve.text = intent.getIntExtra(arrayOfNumbers[11])
                     btnEight.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -331,7 +287,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(6, 10)
                     btnEleven.text = intent.getIntExtra(arrayOfNumbers[10])
                     btnSeven.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -355,7 +311,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(5, 9)
                     btnTen.text = intent.getIntExtra(arrayOfNumbers[9])
                     btnSix.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -375,7 +331,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(4, 8)
                     btnNine.text = intent.getIntExtra(arrayOfNumbers[8])
                     btnFive.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -391,7 +347,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(3, 7)
                     btnEight.text = intent.getIntExtra(arrayOfNumbers[7])
                     btnFour.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -411,7 +367,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(2, 6)
                     btnSeven.text = intent.getIntExtra(arrayOfNumbers[6])
                     btnThree.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -431,7 +387,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(1, 5)
                     btnSix.text = intent.getIntExtra(arrayOfNumbers[5])
                     btnTwo.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -447,7 +403,7 @@ open class GameActivity : AppCompatActivity() {
                     changeParametrs(0, 4)
                     btnFive.text = intent.getIntExtra(arrayOfNumbers[4])
                     btnOne.text = intent.getStringExtra("")
-                } else playSound(nullSound)
+                } else playSound(nullSoundID)
             }
             endGame(checkEnd(arrayOfNumbers))
         }
@@ -473,28 +429,21 @@ open class GameActivity : AppCompatActivity() {
     //завершение игры при правильной и неправильной раскладке
     private fun endGame(string: String) {
         if (string == "end") {
-            playSound(endGameSound)
+            playSound(endGameSoundID)
             val intent = Intent(this, endGame::class.java)
-//            stopSound(loadSound("endgame"))
             startActivity(intent)
         } else if (string == "crush") {
-            playSound(crushGameSound)
+            playSound(crushGameSoundID)
             val intent = Intent(this, CrushActivity::class.java)
-//            stopSound(loadSound("crushgame"))
             startActivity(intent)
         } else if (string == "clicksound") {
-            playSound(clickButtonSound)
+            playSound(clickButtonSoundID)
         }
-//        stopSound(loadSound("clickbutton"))
     }
 
     private fun Intent.getIntExtra(value: Int): String {
         return value.toString()
     }
-
-//    private fun Intent.getStringExtra(value: String): String {
-//        return value
-//    }
 
     // Получил случайный мвссив
     var arrayOfNumb = arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
@@ -530,26 +479,8 @@ open class GameActivity : AppCompatActivity() {
         } else return ""
     }
 
-
-override fun onPause() {
-    super.onPause()
-
-    soundPool.release()
+fun playSound(soundId: Int) {
+    soundPool?.play(soundId, 1F, 1F, 1, 0, 1F)
+}
 }
 
-private fun playSound(soundID: SoundPool): Int {
-    if (soundID > 0) {
-        streamID = soundPool.play(soundID, 1F, 1F, 1, 0, 1F)
-    }
-    return streamID
-}
-
-private fun loadSound(context: Context, resID: Int, priority: Int): SoundPool {
-    return soundPool.load(context, resID, priority)
-
-}
-    private fun mySoundPool(maxStr: Int, strType: Int, srcQwal: Int): SoundPool {
-        return soundPool = mySoundPool(maxStreams, streamType, srcQwality)
-
-    }
-}

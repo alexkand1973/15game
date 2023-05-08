@@ -19,48 +19,59 @@
             android:id="@+id/btnOne"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
-            android:onClick="a1"
+            android:onClick="playSound"
             android:text="+"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnTwo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnThree"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnFour"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,47 +85,59 @@ android:layout_marginLeft="3dp"
             android:id="@+id/btnFive"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnSix"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnSeven"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnEight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -128,47 +151,59 @@ android:layout_marginLeft="3dp"
             android:id="@+id/btnNine"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnTen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnEleven"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnTwelve"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -182,47 +217,59 @@ android:layout_marginLeft="3dp"
             android:id="@+id/btnThirteen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnFourteen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnFifteen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="+"
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnNull"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
             android:layout_weight="1"
             android:backgroundTint="@color/grey"
             android:text="."
+            android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <Button
