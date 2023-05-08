@@ -27,7 +27,7 @@
             android:onClick="playSound"
             android:text="+"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnTwo"
@@ -42,7 +42,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnThree"
@@ -57,7 +57,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnFour"
@@ -71,7 +71,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,7 +93,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnSix"
@@ -108,7 +108,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnSeven"
@@ -123,7 +123,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnEight"
@@ -137,7 +137,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
     </LinearLayout>
 
     <LinearLayout
@@ -159,7 +159,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnTen"
@@ -174,7 +174,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnEleven"
@@ -189,7 +189,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnTwelve"
@@ -203,7 +203,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
     </LinearLayout>
 
     <LinearLayout
@@ -225,7 +225,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnFourteen"
@@ -240,7 +240,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnFifteen"
@@ -255,7 +255,7 @@
             android:text="+"
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
 
         <Button
             android:id="@+id/btnNull"
@@ -269,7 +269,7 @@
             android:text="."
             android:onClick="playSound"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textFontWeight="@integer/material_motion_duration_short_1" />
     </LinearLayout>
 
     <Button
